@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="Cube.js">js/Cube.js</file>
+        <file>3rdparty/gl-matrix.js</file>
+        <file>3rdparty/three.js</file>
+        <file>3rdparty/ThreeJSLoader.js</file>
+        <file>3rdparty/threex.planets.js</file>
+    </qresource>
+</RCC>
