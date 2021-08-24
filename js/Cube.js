@@ -65,9 +65,9 @@ Qt.include("qrc:/3rdparty/three.js")
 // }
 
 
-var scene,camera, renderer,mesh
+var scene, camera, renderer, mesh
 function initializeGL(canvas) {
-     scene = new THREE.Scene();
+    scene = new THREE.Scene();
     /**
      * 创建网格模型
      */
@@ -99,8 +99,11 @@ function initializeGL(canvas) {
     var s = 200; //三维场景显示范围控制系数，系数越大，显示的范围越大
     //创建相机对象
     camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
-    camera.position.set(200, 300, 200); //设置相机位置
+    camera.position.set(0, 0, 200); //设置相机位置
     camera.lookAt(scene.position); //设置相机方向(指向的场景对象)
+    // 辅助坐标系  参数250表示坐标系大小，可以根据场景大小去设置
+    var axisHelper = new THREE.AxisHelper(250);
+    scene.add(axisHelper);
     /**
      * 创建渲染器对象
      */
@@ -110,16 +113,20 @@ function initializeGL(canvas) {
     renderer = new THREE.Canvas3DRenderer(
         { canvas: canvas, antialias: true, devicePixelRatio: canvas.devicePixelRatio }
     );
-    renderer.setSize(width,height);
+    renderer.setSize(width, height);
 
     renderer.setClearColor(0xb9d3ff, 1); //设置背景颜色
     //执行渲染操作   指定场景、相机作为参数
 }
 
-function paintGL(){
+function paintGL(canvas) {
     renderer.render(scene, camera);
-    mesh.rotateY(0.001*180)
+    mesh.rotateY(0.001 * canvas.yRotAnim);
 
+    mesh.rotateX(0.001 * canvas.xRotAnim);
+}
+function degToRad(dgress) {
+    return dgress * Math.PI / 180;
 }
 
 

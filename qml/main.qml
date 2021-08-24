@@ -30,8 +30,8 @@ Window {
         clip: false
         x:root.width/2
         y:root.height/2
-        width: root.width/2
-        height: root.height/2
+        width:640
+        height: 480
         textureSource: cube
     }
 }
