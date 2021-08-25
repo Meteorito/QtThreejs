@@ -99,11 +99,13 @@ function initializeGL(canvas) {
     var s = 200; //三维场景显示范围控制系数，系数越大，显示的范围越大
     //创建相机对象
     camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
-    camera.position.set(0, 0, 200); //设置相机位置
+    camera.position.set(100, 100, 200); //设置相机位置
     camera.lookAt(scene.position); //设置相机方向(指向的场景对象)
     // 辅助坐标系  参数250表示坐标系大小，可以根据场景大小去设置
     var axisHelper = new THREE.AxisHelper(250);
     scene.add(axisHelper);
+    var gridHelper=new THREE.GridHelper(100,100,0xf0f0f0,0xffffff)
+    scene.add(gridHelper);
     /**
      * 创建渲染器对象
      */
