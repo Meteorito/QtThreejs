@@ -13,7 +13,7 @@ Canvas3D {
     property double distannce: 2
     property double cameraAngle: 0
     property string caseColor: "#eeeeee"
-    onInitializeGL:GLCODE.initializeGL(canvas3D)
+    onInitializeGL:GLCODE.initializeGL(canvas3D,textureSource)
     onPaintGL: GLCODE.paintGL(canvas3D)
 
 

@@ -1,4 +1,5 @@
 import QtQuick 2.12
+import QtQuick.Controls 2.12
 import QtQuick.Window 2.12
 
 Window {
@@ -10,8 +11,10 @@ Window {
     Item {
         id: cube
         height:100
+        layer.textureMirroring: ShaderEffectSource.NoMirroring
         layer.enabled: true
         layer.smooth: true
+
         width: 100
         transform: [
             Scale{
@@ -23,8 +26,31 @@ Window {
         ]
         Rectangle{
             anchors.fill: cube
-            color: "green"
+            gradient: Gradient {
+                GradientStop {
+                    position: 0
+                    color: "#92fe9d"
+                }
+
+                GradientStop {
+                    position: 1
+                    color: "#00c9ff"
+                }
+            }
+            color: "#92fe9d"
         }
+        Label{
+            anchors.centerIn: cube
+            text: "上海航翼"
+            layer.textureSize.height: 5
+            layer.textureSize.width: 5
+            layer.samples: 4
+            layer.smooth: true
+            layer.textureMirroring: ShaderEffectSource.MirrorHorizontally
+            scale: 1
+            rotation: 0
+        }
+
     }
     CubeCanvas{
         clip: false
@@ -35,3 +61,9 @@ Window {
         textureSource: cube
     }
 }
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:1.5}
+}
+##^##*/
